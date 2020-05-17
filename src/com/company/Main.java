@@ -11,7 +11,7 @@ public class Main {
         Random random = new Random();
         int[][] arr = new int[10][10];
 
-        int x = 0, y = 0,s=0;
+        int x = 0, y = 0, s = 0;
         for (int l = 0; l < 20; l++) {
             x = random.nextInt(9) + 1;
             y = random.nextInt(9) + 1;
@@ -26,6 +26,15 @@ public class Main {
         arr[1][1] = 3;
         arr[8][8] = 4;
         int r = 1, c = 1;
+        for (int i = 1; i < 9; i++) {
+            for (int j = 1; j < 9; j++)
+                if (arr[i][j - 1] == 1)
+                    if (arr[i + 1][j] == 1)
+                        if (arr[i - 1][j] == 1)
+                            arr[i][j] = 1;
+
+
+        }
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++)
                 System.out.print(arr[i][j] + "  ");
@@ -33,15 +42,15 @@ public class Main {
         }
         Thread.sleep(1000);
         while (true) {
-            if (arr[r][c+1]==1)
-                if (arr[r+1][c]==1)
-                    if (arr[r][c-1]==1)
-                        if (arr[r-1][c]==1){
-                            s=1;
+            if (arr[r][c + 1] == 1)
+                if (arr[r + 1][c] == 1)
+                    if (arr[r][c - 1] == 1)
+                        if (arr[r - 1][c] == 1) {
+                            s = 1;
                             break;
                         }
 
-            if (r==8 && c==8)
+            if (r == 8 && c == 8)
                 break;
             if (arr[r][c + 1] != 1) {
                 arr[r][c + 1] = 3;
@@ -95,7 +104,7 @@ public class Main {
 
 
         }
-        if (s==1)
+        if (s == 1)
             System.out.println("stucked");
         else System.out.println("achieved the cheese");
 
